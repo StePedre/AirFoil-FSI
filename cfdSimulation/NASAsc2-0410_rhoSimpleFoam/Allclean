@@ -3,6 +3,7 @@ cd "${0%/*}" || exit                                # Run from this directory
 . ${WM_PROJECT_DIR:?}/bin/tools/CleanFunctions      # Tutorial clean functions
 #------------------------------------------------------------------------------
 
-cleanCase0
+rm -rf [1-9]*           # rimuove le cartelle dei timestep (tranne la 0)
+rm -rf processor*       # rimuove le cartelle dei processori
 
 #------------------------------------------------------------------------------
