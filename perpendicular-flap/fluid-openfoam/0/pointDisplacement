@@ -1,0 +1,31 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       pointVectorField; // NOTA: pointVectorField!
+    object      pointDisplacement;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 0 0 0 0 0]; // Metri
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+    // L'ALA (Si muove: preCICE sovrascriverà questo valore)
+    NASAsc2-0410
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+
+    // TUTTO IL RESTO (Fermo: deve essere 0)
+    // Usa .* per prendere tutte le altre patch (inlet, outlet, etc)
+    // Oppure elencale una per una se preferisci
+    ".*"
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+}

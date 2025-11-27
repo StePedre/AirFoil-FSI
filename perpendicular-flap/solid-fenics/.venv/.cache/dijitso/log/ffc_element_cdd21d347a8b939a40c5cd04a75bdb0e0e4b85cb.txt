@@ -1,0 +1,2 @@
+c++ -Wall -shared -fPIC -std=c++11 -O2 -I/usr/lib/python3/dist-packages/ffc/backends/ufc -I/root/shared/tutorials/perpendicular-flap/solid-fenics/.venv/.cache/dijitso/include ffc_element_cdd21d347a8b939a40c5cd04a75bdb0e0e4b85cb.cpp -L/root/shared/tutorials/perpendicular-flap/solid-fenics/.venv/.cache/dijitso/lib -Wl,-rpath,/root/shared/tutorials/perpendicular-flap/solid-fenics/.venv/.cache/dijitso/lib -olibdijitso-ffc_element_cdd21d347a8b939a40c5cd04a75bdb0e0e4b85cb.so
+

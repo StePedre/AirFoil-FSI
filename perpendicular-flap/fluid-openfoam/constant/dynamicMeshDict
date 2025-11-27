@@ -1,0 +1,24 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      dynamicMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// 1. Tipo di Mesh Dinamica
+dynamicFvMesh   dynamicMotionSolverFvMesh;
+
+// 2. Librerie necessarie
+motionSolverLibs ( "fvMotionSolvers" );
+
+// 3. Il Solutore di Movimento
+solver displacementLaplacian;
+
+// 4. Coefficienti per la deformazione
+displacementLaplacianCoeffs
+{
+    // diffusivity: Come si propaga il movimento dall'ala verso l'esterno
+    diffusivity     inverseDistance ( NASAsc2-0410 );
+}

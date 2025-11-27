@@ -1,0 +1,48 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+
+application     rhoPimpleFoam;       // latest OpenFOAM
+// application     pimpleDyMFoam; // OpenFOAM v1712, OpenFOAM 5.x, or older
+
+startFrom       startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         0.1;
+
+deltaT          1e-06;        // Parti con un passo piccolissimo per l'avvio
+writeControl    runTime;
+writeInterval   0.005;
+
+adjustTimeStep  yes;          // <--- IMPORTANTE: Lascia che OpenFOAM decida il dt
+maxCo           0.8;          // <--- Target Courant (prova 2.0 o 1.0 per sicurezza)
+maxDeltaT       0.001;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+libs ("/home/openfoam/OpenFOAM/openfoam-v2306/platforms/linux64GccDPInt32Opt/lib/libpreciceAdapterFunctionObject.so");
+functions
+{
+    preCICE_Adapter
+    {
+        type preciceAdapterFunctionObject;
+        errors strict; // Available since OpenFOAM v2012
+    }
+}

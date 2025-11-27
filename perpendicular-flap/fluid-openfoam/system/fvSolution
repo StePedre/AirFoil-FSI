@@ -1,0 +1,109 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      fvSolution;
+}
+
+solvers
+{
+    // --- Densità ---
+    "(rho|rhoFinal)"
+    {
+        solver          diagonal;
+    }
+
+    // --- Pressione (incomprimibile e comprimibile) ---
+    "(p|pFinal|pcorr|pcorrFinal)"
+    {
+        solver          PCG;
+        preconditioner  DIC;
+        tolerance       1e-06;
+        relTol          0.01;
+        smoother        GaussSeidel;
+        // Se pFinal, stringiamo la tolleranza
+        minIter         1;
+    }
+    // Per pFinal specifico (opzionale, sovrascrive sopra)
+    "pFinal"
+    {
+        $p;
+        relTol          0;
+    }
+
+    // --- Velocità e Turbolenza ---
+    "(U|UFinal|k|kFinal|omega|omegaFinal)"
+    {
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+       tolerance       1e-06;
+        relTol          0.01;
+    }
+    // Per le versioni Final, tolleranza relativa zero
+    "(U|k|omega)Final"
+    {
+        $U;
+        relTol          0;
+    }
+
+    // --- Energia (Interna ed Entalpia) ---
+    "(e|eFinal|h|hFinal)"
+    {
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-06;
+        relTol          0.01;
+    }
+    "(e|h)Final"
+    {
+        $e;
+        relTol          0;
+    }
+    
+    // --- Mesh Motion (Spostamento celle) ---
+    "(cellDisplacement|cellDisplacementFinal)"
+    {
+        solver          PCG;            // Conjugate Gradient (Robusto)
+        preconditioner  DIC;
+        tolerance       1e-06;
+        relTol          0.01;
+        smoother        GaussSeidel;
+    }
+}
+
+PIMPLE
+{
+    momentumPredictor yes;
+    nOuterCorrectors 2;     // Aumenta a 2 o 3 se instabile
+    nCorrectors     2;
+    nNonOrthogonalCorrectors 1;
+    
+    // Opzioni utili per comprimibile
+    pRefCell        0;
+    pRefValue       101325; // Pressione atmosferica se il caso è chiuso
+    
+    // Limita la viscosità per evitare esplosioni numeriche
+    maxCo           2.0;
+    rDeltaTSmoothingCoeff 0.1; // Aiuta con adjustTimeStep
+}
+
+relaxationFactors
+{
+    fields
+    {
+        p               0.3;
+        rho             1.0; // Di solito rho non si rilassa in PIMPLE transitorio
+    }
+    equations
+    {
+        U               0.7;
+        "(e|h)"         0.5;
+        "(k|omega)"     0.7;
+    }
+}
+
+potentialFlow
+{
+    nNonOrthogonalCorrectors 10;
+}

@@ -1,0 +1,29 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2306                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      fvOptions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+limitTemperature
+{
+    type            limitTemperature;
+    libs            ("libutilityFunctionObjects.so");
+    
+    // Limiti di sicurezza (Kelvin)
+    min             200;  // Nessuna cella scenderà sotto i 200 K
+    max             10000; // Nessuna cella salirà sopra i 5000 K
+    
+    selectionMode   all;
+}
+
+// ************************************************************************* //

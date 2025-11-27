@@ -1,0 +1,474 @@
+Started on: Thu, 27 Nov 2025 10:16:33 +0000
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2306                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _fbf00d6b-20230626 OPENFOAM=2306 version=2306
+Arch   : "LSB;label=32;scalar=64"
+Exec   : rhoPimpleFoam
+Date   : Nov 27 2025
+Time   : 10:16:33
+Host   : 9778b2e025fe
+PID    : 1403
+I/O    : uncollated
+Case   : /home/openfoam/shared/tutorials/perpendicular-flap/fluid-openfoam
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Selecting dynamicFvMesh dynamicMotionSolverFvMesh
+Selecting motion solver: displacementLaplacian
+Applying motion to entire mesh
+Selecting motion diffusion: inverseDistance
+Selecting patchDistMethod meshWave
+
+PIMPLE: no residual control data found. Calculations will employ 2 corrector loops
+
+Reading thermophysical properties
+
+Selecting thermodynamics package 
+{
+    type            hePsiThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          hConst;
+    equationOfState perfectGas;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
+
+Reading field U
+
+Reading/calculating face flux field phi
+
+Creating turbulence model
+
+Selecting turbulence model type RAS
+Selecting RAS turbulence model kOmegaSST
+RAS
+{
+    RASModel        kOmegaSST;
+    turbulence      on;
+    printCoeffs     on;
+    alphaK1         0.85;
+    alphaK2         1;
+    alphaOmega1     0.5;
+    alphaOmega2     0.856;
+    gamma1          0.555556;
+    gamma2          0.44;
+    beta1           0.075;
+    beta2           0.0828;
+    betaStar        0.09;
+    a1              0.31;
+    b1              1;
+    c1              10;
+    F3              false;
+    decayControl    false;
+    kInf            0;
+    omegaInf        0;
+}
+
+Creating field dpdt for moving meshes
+
+Creating field kinetic energy K
+
+No MRF models present
+
+Creating finite volume options from "system/fvOptions"
+
+Selecting finite volume options type limitTemperature
+    Source: limitTemperature
+    - selecting all cells
+    - selected 1287476 cell(s) with volume 10190.2
+Constructing face momentum rhoUf
+Courant Number mean: 0.000562087 max: 0.685521
+---[preciceAdapter] Loaded the OpenFOAM-preCICE adapter - v1.3.1.
+---[preciceAdapter] Reading preciceDict...
+---[precice] [0m This is preCICE version 3.1.1
+---[precice] [0m Revision info: no-info [git failed to run]
+---[precice] [0m Build type: Release (without debug log)
+---[precice] [0m Configuring preCICE with configuration "/home/openfoam/shared/precice-config.xml"
+---[precice] [0m I am participant "Fluid"
+---[precice] [0m Setting up primary communication to coupling partner/s
+---[precice] [0m Primary ranks are connected
+---[precice] [0m Setting up preliminary secondary communication to coupling partner/s
+---[precice] [0m Prepare partition for mesh Fluid-Mesh
+---[precice] [0m Receive global mesh Solid-Mesh
+---[precice] [0m Setting up secondary communication to coupling partner/s
+---[precice] [0m Secondary ranks are connected
+---[precice] [0m Automatic RBF mapping alias from mesh "Fluid-Mesh" to mesh "Solid-Mesh" in "write" direction resolves to "partition-of-unity RBF" .
+---[precice] [0m Computing "partition-of-unity RBF" mapping from mesh "Fluid-Mesh" to mesh "Solid-Mesh" in "write" direction.
+---[precice] [0m Mapping "Force" for t=0 from "Fluid-Mesh" to "Solid-Mesh" (skipped zero sample)
+---[precice] [0m Automatic RBF mapping alias from mesh "Solid-Mesh" to mesh "Fluid-Mesh" in "read" direction resolves to "partition-of-unity RBF" .
+---[precice] [0m Computing "partition-of-unity RBF" mapping from mesh "Solid-Mesh" to mesh "Fluid-Mesh" in "read" direction.
+---[precice] [0m Mapping "Displacement" for t=0 from "Solid-Mesh" to "Fluid-Mesh" (skipped zero sample)
+---[precice] [0m iteration: 1 of 20 (min 1), time-window: 1, time: 0 of 0.1, time-window-size: 0.0001, max-time-step-size: 0.0001, ongoing: yes, time-window-complete: no, write-iteration-checkpoint 
+---[preciceAdapter] preCICE was configured and initialized
+---[preciceAdapter] Setting the solver's endTime to infinity to prevent early exits. Only preCICE will control the simulation's endTime. Any functionObject's end() method will be triggered by the adapter. You may disable this behavior in the adapter's configuration.
+---[preciceAdapter] The solver's timestep is smaller than the coupling timestep. Subcycling...
+--> FOAM Warning : 
+    From void adapterInfo(std::string, std::string)
+    in file Utilities.C at line 17
+    [36mWarning in the preCICE adapter: [0m
+The adapter does not fully support subcycling for FSI and instabilities may occur.
+
+
+Starting time loop
+
+Courant Number mean: 0.000562087 max: 0.685521
+---[preciceAdapter] The solver's timestep is smaller than the coupling timestep. Subcycling...
+--> FOAM Warning : 
+    From void adapterInfo(std::string, std::string)
+    in file Utilities.C at line 17
+    [36mWarning in the preCICE adapter: [0m
+The adapter does not fully support subcycling for FSI and instabilities may occur.
+
+deltaT = 1.1167e-06
+Time = 1.1167e-06
+
+PIMPLE: iteration 1
+DICPCG:  Solving for cellDisplacementx, Initial residual = 0, Final residual = 0, No Iterations 0
+DICPCG:  Solving for cellDisplacementy, Initial residual = 0, Final residual = 0, No Iterations 0
+DICPCG:  Solving for cellDisplacementz, Initial residual = 0, Final residual = 0, No Iterations 0
+DICPCG:  Solving for pcorr, Initial residual = 1, Final residual = 0.000809154, No Iterations 3
+DICPCG:  Solving for pcorr, Initial residual = 0.000402773, Final residual = 2.55412e-06, No Iterations 2
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+smoothSolver:  Solving for Ux, Initial residual = 0.999991, Final residual = 0.000226206, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 1, Final residual = 0.000519572, No Iterations 1
+smoothSolver:  Solving for Uz, Initial residual = 1, Final residual = 0.000149227, No Iterations 1
+smoothSolver:  Solving for e, Initial residual = 0.991732, Final residual = 0.000151952, No Iterations 1
+limitTemperature limitTemperature Lower limited 0 (0%) of cells, with min limit 200
+limitTemperature limitTemperature Upper limited 0 (0%) of cells, with max limit 10000
+limitTemperature limitTemperature Unlimited Tmin 288
+limitTemperature limitTemperature Unlimited Tmax 288
+DICPCG:  Solving for p, Initial residual = 1, Final residual = 0.000154791, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 5.67225e-08, Final residual = 4.87627e-11, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.51524e-08, global = -1.02827e-10, cumulative = -1.02827e-10
+DICPCG:  Solving for p, Initial residual = 0.000194842, Final residual = 2.95915e-08, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 4.43426e-08, Final residual = 3.73365e-11, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.51525e-08, global = -1.02826e-10, cumulative = -2.05653e-10
+PIMPLE: iteration 2
+smoothSolver:  Solving for Ux, Initial residual = 0.000282351, Final residual = 1.63878e-07, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 1.93188e-06, Final residual = 2.0943e-09, No Iterations 1
+smoothSolver:  Solving for Uz, Initial residual = 3.92753e-05, Final residual = 2.48134e-08, No Iterations 1
+smoothSolver:  Solving for e, Initial residual = 6.84033e-05, Final residual = 4.1012e-08, No Iterations 1
+limitTemperature limitTemperature Lower limited 0 (0%) of cells, with min limit 200
+limitTemperature limitTemperature Upper limited 0 (0%) of cells, with max limit 10000
+limitTemperature limitTemperature Unlimited Tmin 203.18
+limitTemperature limitTemperature Unlimited Tmax 303.099
+DICPCG:  Solving for p, Initial residual = 0.000145676, Final residual = 3.77442e-08, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 1.02632e-07, Final residual = 1.56016e-10, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.69976e-14, global = -1.24102e-14, cumulative = -2.05665e-10
+DICPCG:  Solving for p, Initial residual = 5.43463e-06, Final residual = 1.28182e-09, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 4.67531e-08, Final residual = 2.7732e-11, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 2.24833e-15, global = -1.09525e-15, cumulative = -2.05666e-10
+smoothSolver:  Solving for omega, Initial residual = 6.70094e-08, Final residual = 6.70094e-08, No Iterations 0
+smoothSolver:  Solving for k, Initial residual = 0.99998, Final residual = 6.1945e-09, No Iterations 2
+ExecutionTime = 70.53 s  ClockTime = 72 s
+
+---[precice] [0m iteration: 1 of 20 (min 1), time-window: 1, time: 1.1167e-06 of 0.1, time-window-size: 0.0001, max-time-step-size: 9.88833e-05, ongoing: yes, time-window-complete: no, 
+Courant Number mean: 0.000627682 max: 0.494301
+---[preciceAdapter] The solver's timestep is smaller than the coupling timestep. Subcycling...
+--> FOAM Warning : 
+    From void adapterInfo(std::string, std::string)
+    in file Utilities.C at line 17
+    [36mWarning in the preCICE adapter: [0m
+The adapter does not fully support subcycling for FSI and instabilities may occur.
+
+deltaT = 1.29743e-06
+Time = 2.41413e-06
+
+PIMPLE: iteration 1
+DICPCG:  Solving for cellDisplacementx, Initial residual = 0, Final residual = 0, No Iterations 0
+DICPCG:  Solving for cellDisplacementy, Initial residual = 0, Final residual = 0, No Iterations 0
+DICPCG:  Solving for cellDisplacementz, Initial residual = 0, Final residual = 0, No Iterations 0
+DICPCG:  Solving for pcorr, Initial residual = 1, Final residual = 0.00821792, No Iterations 2
+DICPCG:  Solving for pcorr, Initial residual = 0.00404599, Final residual = 1.61651e-05, No Iterations 3
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+smoothSolver:  Solving for Ux, Initial residual = 3.35795e-06, Final residual = 1.65108e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 3.59759e-06, Final residual = 2.29466e-09, No Iterations 1
+smoothSolver:  Solving for Uz, Initial residual = 1.13383e-05, Final residual = 3.8342e-09, No Iterations 1
+smoothSolver:  Solving for e, Initial residual = 8.51216e-05, Final residual = 1.53043e-08, No Iterations 1
+limitTemperature limitTemperature Lower limited 0 (0%) of cells, with min limit 200
+limitTemperature limitTemperature Upper limited 0 (0%) of cells, with max limit 10000
+limitTemperature limitTemperature Unlimited Tmin 247.996
+limitTemperature limitTemperature Unlimited Tmax 321.891
+DICPCG:  Solving for p, Initial residual = 0.000336021, Final residual = 8.16153e-08, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 8.25974e-08, Final residual = 1.16068e-10, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.78463e-08, global = -2.73052e-11, cumulative = -2.32972e-10
+DICPCG:  Solving for p, Initial residual = 0.000138483, Final residual = 3.1386e-08, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 7.32107e-08, Final residual = 9.23369e-11, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.80253e-08, global = -2.73031e-11, cumulative = -2.60275e-10
+PIMPLE: iteration 2
+smoothSolver:  Solving for Ux, Initial residual = 2.54068e-05, Final residual = 1.78219e-08, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 1.17574e-06, Final residual = 1.43741e-09, No Iterations 1
+smoothSolver:  Solving for Uz, Initial residual = 7.01798e-06, Final residual = 8.56654e-09, No Iterations 1
+smoothSolver:  Solving for e, Initial residual = 0.000137562, Final residual = 9.76985e-08, No Iterations 1
+limitTemperature limitTemperature Lower limited 0 (0%) of cells, with min limit 200
+limitTemperature limitTemperature Upper limited 0 (0%) of cells, with max limit 10000
+limitTemperature limitTemperature Unlimited Tmin 269.314
+limitTemperature limitTemperature Unlimited Tmax 293.647
+DICPCG:  Solving for p, Initial residual = 9.89991e-05, Final residual = 3.83195e-08, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 1.21833e-07, Final residual = 2.5251e-10, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 3.50408e-14, global = -2.46588e-14, cumulative = -2.60299e-10
+DICPCG:  Solving for p, Initial residual = 5.55578e-06, Final residual = 1.60726e-09, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 3.56349e-08, Final residual = 2.16593e-11, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 3.1e-15, global = 1.42953e-15, cumulative = -2.60298e-10
+smoothSolver:  Solving for omega, Initial residual = 7.17892e-08, Final residual = 7.17892e-08, No Iterations 0
+smoothSolver:  Solving for k, Initial residual = 0.00518395, Final residual = 2.57577e-08, No Iterations 1
+ExecutionTime = 91.81 s  ClockTime = 94 s
+
+---[precice] [0m iteration: 1 of 20 (min 1), time-window: 1, time: 2.41413e-06 of 0.1, time-window-size: 0.0001, max-time-step-size: 9.75859e-05, ongoing: yes, time-window-complete: no, 
+Courant Number mean: 0.000729268 max: 0.424297
+---[preciceAdapter] The solver's timestep is smaller than the coupling timestep. Subcycling...
+--> FOAM Warning : 
+    From void adapterInfo(std::string, std::string)
+    in file Utilities.C at line 17
+    [36mWarning in the preCICE adapter: [0m
+The adapter does not fully support subcycling for FSI and instabilities may occur.
+
+deltaT = 1.54206e-06
+Time = 3.95619e-06
+
+PIMPLE: iteration 1
+DICPCG:  Solving for cellDisplacementx, Initial residual = 0, Final residual = 0, No Iterations 0
+DICPCG:  Solving for cellDisplacementy, Initial residual = 0, Final residual = 0, No Iterations 0
+DICPCG:  Solving for cellDisplacementz, Initial residual = 0, Final residual = 0, No Iterations 0
+DICPCG:  Solving for pcorr, Initial residual = 1, Final residual = 0.00927195, No Iterations 2
+DICPCG:  Solving for pcorr, Initial residual = 0.00453603, Final residual = 9.05702e-06, No Iterations 3
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+smoothSolver:  Solving for Ux, Initial residual = 2.7789e-06, Final residual = 1.77915e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 2.94591e-06, Final residual = 2.32989e-09, No Iterations 1
+smoothSolver:  Solving for Uz, Initial residual = 1.51886e-05, Final residual = 9.14143e-09, No Iterations 1
+smoothSolver:  Solving for e, Initial residual = 3.5745e-05, Final residual = 8.11749e-09, No Iterations 1
+limitTemperature limitTemperature Lower limited 0 (0%) of cells, with min limit 200
+limitTemperature limitTemperature Upper limited 0 (0%) of cells, with max limit 10000
+limitTemperature limitTemperature Unlimited Tmin 245.326
+limitTemperature limitTemperature Unlimited Tmax 321.177
+DICPCG:  Solving for p, Initial residual = 0.000226865, Final residual = 9.50624e-08, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 7.63833e-08, Final residual = 2.21146e-10, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 2.14581e-08, global = 8.38286e-11, cumulative = -1.76469e-10
+DICPCG:  Solving for p, Initial residual = 0.000107975, Final residual = 4.35477e-08, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 5.664e-08, Final residual = 1.59942e-10, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 2.1671e-08, global = 8.38345e-11, cumulative = -9.26349e-11
+PIMPLE: iteration 2
+smoothSolver:  Solving for Ux, Initial residual = 1.22317e-05, Final residual = 1.12547e-08, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 1.08189e-06, Final residual = 1.60606e-09, No Iterations 1
+smoothSolver:  Solving for Uz, Initial residual = 1.05199e-05, Final residual = 1.76136e-08, No Iterations 1
+smoothSolver:  Solving for e, Initial residual = 0.000233209, Final residual = 2.14523e-07, No Iterations 1
+limitTemperature limitTemperature Lower limited 0 (0%) of cells, with min limit 200
+limitTemperature limitTemperature Upper limited 0 (0%) of cells, with max limit 10000
+limitTemperature limitTemperature Unlimited Tmin 236.129
+limitTemperature limitTemperature Unlimited Tmax 329.216
+DICPCG:  Solving for p, Initial residual = 7.1419e-05, Final residual = 4.77388e-08, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 8.38653e-08, Final residual = 3.98412e-10, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 9.05816e-14, global = -5.29332e-14, cumulative = -9.26879e-11
+DICPCG:  Solving for p, Initial residual = 4.26748e-06, Final residual = 1.82465e-09, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 1.52699e-08, Final residual = 1.57129e-11, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 3.21653e-15, global = 4.25981e-16, cumulative = -9.26874e-11
+smoothSolver:  Solving for omega, Initial residual = 7.72903e-08, Final residual = 7.72903e-08, No Iterations 0
+smoothSolver:  Solving for k, Initial residual = 0.00305445, Final residual = 2.16668e-08, No Iterations 1
+ExecutionTime = 113.86 s  ClockTime = 116 s
+
+---[precice] [0m iteration: 1 of 20 (min 1), time-window: 1, time: 3.95619e-06 of 0.1, time-window-size: 0.0001, max-time-step-size: 9.60438e-05, ongoing: yes, time-window-complete: no, 
+Courant Number mean: 0.000866767 max: 0.6212
+---[preciceAdapter] The solver's timestep is smaller than the coupling timestep. Subcycling...
+--> FOAM Warning : 
+    From void adapterInfo(std::string, std::string)
+    in file Utilities.C at line 17
+    [36mWarning in the preCICE adapter: [0m
+The adapter does not fully support subcycling for FSI and instabilities may occur.
+
+deltaT = 1.74065e-06
+Time = 5.69684e-06
+
+PIMPLE: iteration 1
+DICPCG:  Solving for cellDisplacementx, Initial residual = 0, Final residual = 0, No Iterations 0
+DICPCG:  Solving for cellDisplacementy, Initial residual = 0, Final residual = 0, No Iterations 0
+DICPCG:  Solving for cellDisplacementz, Initial residual = 0, Final residual = 0, No Iterations 0
+DICPCG:  Solving for pcorr, Initial residual = 1, Final residual = 0.001315, No Iterations 3
+DICPCG:  Solving for pcorr, Initial residual = 0.00064728, Final residual = 2.16552e-06, No Iterations 3
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+smoothSolver:  Solving for Ux, Initial residual = 2.332e-06, Final residual = 1.85687e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 2.57152e-06, Final residual = 2.2647e-09, No Iterations 1
+smoothSolver:  Solving for Uz, Initial residual = 1.84507e-05, Final residual = 1.78704e-08, No Iterations 1
+smoothSolver:  Solving for e, Initial residual = 2.00476e-05, Final residual = 5.58685e-09, No Iterations 1
+limitTemperature limitTemperature Lower limited 2 (0%) of cells, with min limit 200
+limitTemperature limitTemperature Upper limited 0 (0%) of cells, with max limit 10000
+limitTemperature limitTemperature Unlimited Tmin 217.943
+limitTemperature limitTemperature Unlimited Tmax 319.638
+DICPCG:  Solving for p, Initial residual = 0.00018162, Final residual = 9.38828e-08, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 8.34073e-08, Final residual = 3.1663e-10, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 2.44418e-08, global = 2.67302e-10, cumulative = 1.74614e-10
+DICPCG:  Solving for p, Initial residual = 8.69574e-05, Final residual = 4.66451e-08, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 5.9048e-08, Final residual = 2.64387e-10, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 2.46032e-08, global = 2.67313e-10, cumulative = 4.41927e-10
+PIMPLE: iteration 2
+smoothSolver:  Solving for Ux, Initial residual = 7.5736e-06, Final residual = 8.65158e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 1.05231e-06, Final residual = 1.75512e-09, No Iterations 1
+smoothSolver:  Solving for Uz, Initial residual = 1.30249e-05, Final residual = 5.3998e-08, No Iterations 1
+smoothSolver:  Solving for e, Initial residual = 4.53993e-05, Final residual = 5.45602e-08, No Iterations 1
+limitTemperature limitTemperature Lower limited 2 (0%) of cells, with min limit 200
+limitTemperature limitTemperature Upper limited 0 (0%) of cells, with max limit 10000
+limitTemperature limitTemperature Unlimited Tmin 200
+limitTemperature limitTemperature Unlimited Tmax 412.486
+DICPCG:  Solving for p, Initial residual = 6.05983e-05, Final residual = 5.72149e-08, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 1.26694e-07, Final residual = 7.74512e-10, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.98592e-13, global = -9.2857e-14, cumulative = 4.41835e-10
+DICPCG:  Solving for p, Initial residual = 3.93469e-06, Final residual = 2.52984e-09, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 1.62828e-08, Final residual = 3.22136e-11, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 7.2716e-15, global = 8.38227e-16, cumulative = 4.41835e-10
+smoothSolver:  Solving for omega, Initial residual = 7.96765e-08, Final residual = 7.96765e-08, No Iterations 0
+smoothSolver:  Solving for k, Initial residual = 0.00220708, Final residual = 2.04105e-08, No Iterations 1
+ExecutionTime = 135.17 s  ClockTime = 138 s
+
+---[precice] [0m iteration: 1 of 20 (min 1), time-window: 1, time: 5.69684e-06 of 0.1, time-window-size: 0.0001, max-time-step-size: 9.43032e-05, ongoing: yes, time-window-complete: no, 
+Courant Number mean: 0.000978388 max: 4.39095
+---[preciceAdapter] The solver's timestep is smaller than the coupling timestep. Subcycling...
+--> FOAM Warning : 
+    From void adapterInfo(std::string, std::string)
+    in file Utilities.C at line 17
+    [36mWarning in the preCICE adapter: [0m
+The adapter does not fully support subcycling for FSI and instabilities may occur.
+
+deltaT = 3.17134e-07
+Time = 6.01397e-06
+
+PIMPLE: iteration 1
+DICPCG:  Solving for cellDisplacementx, Initial residual = 0, Final residual = 0, No Iterations 0
+DICPCG:  Solving for cellDisplacementy, Initial residual = 0, Final residual = 0, No Iterations 0
+DICPCG:  Solving for cellDisplacementz, Initial residual = 0, Final residual = 0, No Iterations 0
+DICPCG:  Solving for pcorr, Initial residual = 1, Final residual = 0.000226796, No Iterations 2
+DICPCG:  Solving for pcorr, Initial residual = 0.000110697, Final residual = 4.84017e-07, No Iterations 3
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+smoothSolver:  Solving for Ux, Initial residual = 3.23285e-07, Final residual = 3.23285e-07, No Iterations 0
+smoothSolver:  Solving for Uy, Initial residual = 3.92337e-07, Final residual = 3.92337e-07, No Iterations 0
+smoothSolver:  Solving for Uz, Initial residual = 3.00257e-06, Final residual = 2.64321e-10, No Iterations 1
+smoothSolver:  Solving for e, Initial residual = 1.86946e-06, Final residual = 1.95347e-11, No Iterations 1
+limitTemperature limitTemperature Lower limited 2 (0%) of cells, with min limit 200
+limitTemperature limitTemperature Upper limited 0 (0%) of cells, with max limit 10000
+limitTemperature limitTemperature Unlimited Tmin 200
+limitTemperature limitTemperature Unlimited Tmax 318.019
+DICPCG:  Solving for p, Initial residual = 3.04793e-05, Final residual = 2.69412e-11, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 6.18511e-10, Final residual = 1.88827e-15, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 4.7079e-09, global = -3.57677e-11, cumulative = 4.06068e-10
+DICPCG:  Solving for p, Initial residual = 1.99894e-05, Final residual = 1.75987e-11, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 4.36191e-10, Final residual = 1.30734e-15, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 4.72028e-09, global = -3.57677e-11, cumulative = 3.703e-10
+PIMPLE: iteration 2
+smoothSolver:  Solving for Ux, Initial residual = 1.12222e-06, Final residual = 1.27051e-10, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 1.84083e-07, Final residual = 1.84083e-07, No Iterations 0
+smoothSolver:  Solving for Uz, Initial residual = 1.99571e-06, Final residual = 4.27111e-09, No Iterations 1
+smoothSolver:  Solving for e, Initial residual = 3.46077e-06, Final residual = 4.85135e-10, No Iterations 1
+limitTemperature limitTemperature Lower limited 2 (0%) of cells, with min limit 200
+limitTemperature limitTemperature Upper limited 0 (0%) of cells, with max limit 10000
+limitTemperature limitTemperature Unlimited Tmin 200
+limitTemperature limitTemperature Unlimited Tmax 318.997
+DICPCG:  Solving for p, Initial residual = 1.24837e-05, Final residual = 2.1834e-11, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 8.01204e-10, Final residual = 4.91036e-15, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 2.02855e-16, global = 9.79737e-18, cumulative = 3.703e-10
+DICPCG:  Solving for p, Initial residual = 2.10734e-07, Final residual = 2.35729e-13, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 3.04357e-11, Final residual = 5.57118e-17, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.70675e-16, global = 1.76516e-17, cumulative = 3.703e-10
+smoothSolver:  Solving for omega, Initial residual = 1.47823e-08, Final residual = 1.47823e-08, No Iterations 0
+smoothSolver:  Solving for k, Initial residual = 0.000286448, Final residual = 9.55754e-11, No Iterations 1
+ExecutionTime = 215.66 s  ClockTime = 219 s
+
+---[precice] [0m iteration: 1 of 20 (min 1), time-window: 1, time: 6.01397e-06 of 0.1, time-window-size: 0.0001, max-time-step-size: 9.3986e-05, ongoing: yes, time-window-complete: no, 
+Courant Number mean: 0.000178255 max: 0.168101
+---[preciceAdapter] The solver's timestep is smaller than the coupling timestep. Subcycling...
+--> FOAM Warning : 
+    From void adapterInfo(std::string, std::string)
+    in file Utilities.C at line 17
+    [36mWarning in the preCICE adapter: [0m
+The adapter does not fully support subcycling for FSI and instabilities may occur.
+
+deltaT = 3.80561e-07
+Time = 6.39453e-06
+
+PIMPLE: iteration 1
+DICPCG:  Solving for cellDisplacementx, Initial residual = 0, Final residual = 0, No Iterations 0
+DICPCG:  Solving for cellDisplacementy, Initial residual = 0, Final residual = 0, No Iterations 0
+DICPCG:  Solving for cellDisplacementz, Initial residual = 0, Final residual = 0, No Iterations 0
+DICPCG:  Solving for pcorr, Initial residual = 1, Final residual = 0.000394934, No Iterations 2
+DICPCG:  Solving for pcorr, Initial residual = 0.000195978, Final residual = 1.51429e-06, No Iterations 5
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+smoothSolver:  Solving for Ux, Initial residual = 3.84124e-07, Final residual = 3.84124e-07, No Iterations 0
+smoothSolver:  Solving for Uy, Initial residual = 4.62311e-07, Final residual = 4.62311e-07, No Iterations 0
+smoothSolver:  Solving for Uz, Initial residual = 3.7784e-06, Final residual = 4.39981e-10, No Iterations 1
+smoothSolver:  Solving for e, Initial residual = 2.07648e-06, Final residual = 3.16047e-11, No Iterations 1
+limitTemperature limitTemperature Lower limited 2 (0%) of cells, with min limit 200
+limitTemperature limitTemperature Upper limited 0 (0%) of cells, with max limit 10000
+limitTemperature limitTemperature Unlimited Tmin 200
+limitTemperature limitTemperature Unlimited Tmax 327.578
+DICPCG:  Solving for p, Initial residual = 4.0303e-05, Final residual = 6.95869e-11, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 1.19646e-09, Final residual = 7.78226e-15, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 5.69818e-09, global = -4.34298e-11, cumulative = 3.2687e-10
+DICPCG:  Solving for p, Initial residual = 2.59842e-05, Final residual = 4.44854e-11, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 8.29674e-10, Final residual = 5.28947e-15, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 5.71716e-09, global = -4.34298e-11, cumulative = 2.8344e-10
+PIMPLE: iteration 2
+smoothSolver:  Solving for Ux, Initial residual = 1.25541e-06, Final residual = 8.6011e-10, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 2.1764e-07, Final residual = 2.1764e-07, No Iterations 0
+smoothSolver:  Solving for Uz, Initial residual = 3.00762e-06, Final residual = 3.49619e-08, No Iterations 1
+smoothSolver:  Solving for e, Initial residual = 3.88794e-06, Final residual = 3.48301e-09, No Iterations 1
+limitTemperature limitTemperature Lower limited 5 (0%) of cells, with min limit 200
+limitTemperature limitTemperature Upper limited 0 (0%) of cells, with max limit 10000
+limitTemperature limitTemperature Unlimited Tmin 200
+limitTemperature limitTemperature Unlimited Tmax 328.505
+DICPCG:  Solving for p, Initial residual = 1.61002e-05, Final residual = 5.53865e-11, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 1.55423e-09, Final residual = 2.23233e-14, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.41977e-16, global = 3.41037e-17, cumulative = 2.8344e-10
+DICPCG:  Solving for p, Initial residual = 3.47426e-07, Final residual = 7.82523e-13, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 6.23435e-11, Final residual = 2.77488e-16, No Iterations 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.29821e-16, global = 3.12611e-17, cumulative = 2.83441e-10
+smoothSolver:  Solving for omega, Initial residual = 1.7467e-08, Final residual = 1.7467e-08, No Iterations 0
+smoothSolver:  Solving for k, Initial residual = 0.000327236, Final residual = 4.41235e-10, No Iterations 1
+ExecutionTime = 353.73 s  ClockTime = 358 s
+
+---[precice] [0m iteration: 1 of 20 (min 1), time-window: 1, time: 6.39453e-06 of 0.1, time-window-size: 0.0001, max-time-step-size: 9.36055e-05, ongoing: yes, time-window-complete: no, 
+Courant Number mean: 0.000213906 max: 0.26025
+---[preciceAdapter] The solver's timestep is smaller than the coupling timestep. Subcycling...
+--> FOAM Warning : 
+    From void adapterInfo(std::string, std::string)
+    in file Utilities.C at line 17
+    [36mWarning in the preCICE adapter: [0m
+The adapter does not fully support subcycling for FSI and instabilities may occur.
+
+deltaT = 4.56673e-07
+Time = 6.85121e-06
+
+PIMPLE: iteration 1
