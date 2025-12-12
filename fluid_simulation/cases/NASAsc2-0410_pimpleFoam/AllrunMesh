@@ -1,0 +1,15 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+#------------------------------------------------------------------------------
+
+rm log.*
+rm -r processor*
+
+runApplication blockMesh
+runApplication surfaceFeatureExtract
+runApplication decomposePar
+runApplication mpirun -np 4 --oversubscribe snappyHexMesh -overwrite -parallel
+runApplication reconstructParMesh -constant
+
+#------------------------------------------------------------------------------
