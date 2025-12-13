@@ -114,7 +114,7 @@ castellatedMeshControls
         NASAsc2-0410
         {
             // Surface-wise min and max refinement level
-            level (4 5);
+            level (4 6);
 
             // Optional specification of patch type (default is wall). No
             // constraint types (cyclic, symmetry) etc. are allowed.
