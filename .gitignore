@@ -9,7 +9,7 @@ hypre-**
 
 **/polyMesh/
 
-log.**
+# log.**
 
 # Editor and misc backup files - anywhere
 *~
