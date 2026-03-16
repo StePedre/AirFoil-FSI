@@ -1,0 +1,69 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2306                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     pimpleFoam;
+
+startFrom       startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         1.5; // da 0 a 0.250 è la fase di warm up. Da 0.250 a 0.350 ci sono i 200 steps per l'analisi di scalabilità
+
+deltaT          5e-4;
+
+adjustTimeStep  no;
+
+maxCo           15.0;
+
+writeControl    timeStep;
+
+writeInterval   100; // 2000 per le sim, 500 per il warmup
+
+purgeWrite      1;
+
+writeFormat     binary;
+
+writePrecision   8;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
+functions
+{
+    #include "forceCoeffs"
+    #includeFunc solverInfo
+
+    yPlus_monitoring
+    {
+        type            yPlus;
+        libs            (fieldFunctionObjects);
+        writeControl    writeTime; 
+        patches         (NASAsc2-0410); 
+        writeToFile     true;
+        writeFields     true;
+        log             false;
+    }
+}
+
+
+// ************************************************************************* //

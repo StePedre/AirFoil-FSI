@@ -1,0 +1,38 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       pointVectorField;
+    object      pointDisplacement;
+}
+
+dimensions      [0 1 0 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+    inlet
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+
+    outlet
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+
+    walls // Modificato da domainWalls
+    {
+        type            fixedValue; // Le pareti del canale sono fisse
+        value           uniform (0 0 0); 
+    }
+
+    NASA
+    {
+        type            fixedValue; // CRUCIALE: riceve lo spostamento da preCICE
+        value           $internalField; // Valore iniziale 0
+    }
+}

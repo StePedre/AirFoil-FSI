@@ -1,0 +1,72 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+
+application     pimpleFoam;
+
+startFrom       startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         2;
+
+deltaT          0.0025;
+
+writeControl    adjustableRunTime;
+
+writeInterval   0.05;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+
+libs ("/usr/lib/openfoam/openfoam2306/platforms/linuxARM64GccDPInt32Opt/lib/libpreciceAdapterFunctionObject.so");
+
+
+functions
+{
+    precice
+    {
+        type          preciceAdapterFunctionObject;
+        enabled       true;
+        preciceDict   "system/preciceDict";
+    }
+
+    forces
+    {
+        type            forceCoeffs;
+        libs            (forces);
+        writeControl    timeStep;
+        writeInterval   1;
+
+        patches         (NASA); // Assicurati che il nome sia corretto
+        rho             rhoInf;      
+        rhoInf          1.225;        // Densità dell'aria
+        
+        // Parametri dell'ala (Corda 1m, Apertura 3m)
+        magUInf         100.0;         // Velocità indisturbata (controlla 0/U)
+        lRef            1.0;          // Corda
+        Aref            3.0;          // Area di riferimento (Corda * Apertura)
+        
+        liftDir         (0 1 0);      // Direzione Portanza (Y)
+        dragDir         (1 0 0);      // Direzione Resistenza (X)
+        pitchAxis       (0 0 1);      // Asse di beccheggio (Z)
+        CofR            (0 0 0);      // Centro di rotazione
+    }
+
+}
