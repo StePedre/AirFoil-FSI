@@ -3,7 +3,7 @@
 **Team:** Mattia Gotti, Michele Milani, Stefano Pedretti, Federico Pinto
 
 ## 📌 Overview
-This project was developed for the High Performance Simulation Lab for Mechanical Engineering course. It presents a full three-dimensional (3D) Fluid-Structure Interaction (FSI) simulation of a deformable wing based on the NASA SC(2)-0410 airfoil. The simulation employs a high-fidelity partitioned approach to manage the complex aerodynamic and structural coupling implicitly.
+This project was developed for the High Performance Simulation Lab for Mechanical Engineering course (A.Y. 2025/2026). It presents a full three-dimensional (3D) Fluid-Structure Interaction (FSI) simulation of a deformable wing based on the NASA SC(2)-0410 airfoil. The simulation employs a high-fidelity partitioned approach to manage the complex aerodynamic and structural coupling implicitly.
 
 ## 🛠️ Technologies
 * **Fluid Solver:** OpenFOAM
